@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_14_082602) do
+ActiveRecord::Schema.define(version: 2021_10_15_065823) do
+
+  create_table "countries", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "name", null: false
+    t.string "continent", null: false
+    t.string "region", null: false
+    t.decimal "surface_area", precision: 10, scale: 2, null: false
+    t.integer "indep_year"
+    t.integer "population", null: false
+    t.decimal "life_expectancy", precision: 3, scale: 1
+    t.decimal "gnp", precision: 10, scale: 2
+    t.string "local_name", null: false
+    t.string "government_form", null: false
+    t.string "head_of_state"
+    t.integer "capital"
+    t.string "code2", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["code"], name: "index_countries_on_code", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

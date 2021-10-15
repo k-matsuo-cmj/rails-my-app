@@ -1,0 +1,28 @@
+<h1>Charts#index</h1>
+<p>Find me in app/views/charts/index.html.erb</p>
+
+<div class="container">
+  <div class="row g-3">
+    <p class="h2">Countries(group by continent)</p>
+    <div class="col-md-6">
+      <p class="h3 text-center">Count</p>
+      <%= pie_chart @countries.group(:continent).count %>
+    </div>
+    <div class="col-md-6">
+      <p class="h3 text-center">Population</p>
+      <%= pie_chart @countries.group(:continent).sum(:Population) %>
+    </div>
+    <div class="col-md-6">
+      <p class="h3 text-center">Surface</p>
+      <%= pie_chart @countries.group(:continent).sum(:surface_area) %>
+    </div>
+    <div class="col-md-6">
+      <p class="h3 text-center">GNP</p>
+      <%= pie_chart @countries.group(:continent).sum(:gnp) %>
+    </div>
+    <div class="col-md-6">
+      <p class="h3 text-center">Life Expectancy</p>
+      <%= bar_chart @countries.group(:continent).average(:life_expectancy) %>
+    </div>
+  </div>
+</div>
