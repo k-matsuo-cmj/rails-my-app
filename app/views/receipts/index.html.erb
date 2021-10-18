@@ -1,0 +1,24 @@
+<h1>Receipts#index</h1>
+<p>Find me in app/views/receipts/index.html.erb</p>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Date</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= @reciepts.each if @receipts.any? do |receipt| %>
+      <tr>
+        <td><%= receipt.id %></td>
+        <td><%= receipt.created_at %></td>
+        <td><%= receipt.total_price %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "add", new_receipt_path, class: "btn btn-primary" %>
+</div>
