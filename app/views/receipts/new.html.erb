@@ -2,8 +2,20 @@
 <p>Find me in app/views/receipts/new.html.erb</p>
 
 <div class="container">
+  <% if @receipt.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-danger">
+        The form contains <%= pluralize(@receipt.errors.count, "error") %>.
+      </div>
+      <ul>
+      <% @receipt.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="form-group">
-    <%= form_with(model: @receipt, local: false) do |f| %>
+    <%= form_with(model: @receipt, local: true) do |f| %>
       <div class="mb-3">
         <%= f.label :total_price, class: "form-label" %>
         <%= f.number_field :total_price, class: "form-control text-end" %>

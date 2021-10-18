@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <%= @reciepts.each if @receipts.any? do |receipt| %>
+      <% @receipts.each do |receipt| %>
       <tr>
         <td><%= receipt.id %></td>
         <td><%= receipt.created_at %></td>
