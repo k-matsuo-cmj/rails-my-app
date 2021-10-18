@@ -11,6 +11,7 @@ import "bootstrap"
 import "../stylesheets/application"
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import "chartkick/chart.js"
+import "jquery"
 
 Rails.start()
 Turbolinks.start()
