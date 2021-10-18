@@ -1,2 +1,30 @@
 <h1>Receipts#new</h1>
 <p>Find me in app/views/receipts/new.html.erb</p>
+
+<div class="container">
+  <div class="form-group">
+    <%= form_with(model: @receipt, local: false) do |f| %>
+      <div class="mb-3">
+        <%= f.label :total_price, class: "form-label" %>
+        <%= f.number_field :total_price, class: "form-control text-end" %>
+      </div>
+      <%= f.label :receipt_details, class: "form-label" %>
+      <%= f.fields_for :receipt_details do |df| %>
+        <div class="row mb-3">
+          <div class="col">
+            <%= df.text_field :name, class: "form-control", placeholder: :name %>
+          </div>
+          <div class="col">
+            <%= df.number_field :price, class: "form-control text-end", placeholder: :price %>
+          </div>
+          <div class="col">
+            <%= df.number_field :quantity, class: "form-control text-end", placeholder: :quantity %>
+          </div>
+        </div>
+      <% end %>
+      <div class="text-center">
+        <%= f.submit "登録", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
