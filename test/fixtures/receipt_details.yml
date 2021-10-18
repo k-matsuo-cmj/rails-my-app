@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  receipt: one
+  name: MyString
+  price: 1
+  quantity: 1
+
+two:
+  receipt: two
+  name: MyString
+  price: 1
+  quantity: 1

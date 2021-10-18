@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_15_065823) do
+ActiveRecord::Schema.define(version: 2021_10_18_025441) do
 
   create_table "countries", force: :cascade do |t|
     t.string "code", null: false
@@ -32,6 +32,22 @@ ActiveRecord::Schema.define(version: 2021_10_15_065823) do
     t.index ["code"], name: "index_countries_on_code", unique: true
   end
 
+  create_table "receipt_details", force: :cascade do |t|
+    t.integer "receipt_id", null: false
+    t.string "name"
+    t.integer "price"
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["receipt_id"], name: "index_receipt_details_on_receipt_id"
+  end
+
+  create_table "receipts", force: :cascade do |t|
+    t.integer "total_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -42,4 +58,5 @@ ActiveRecord::Schema.define(version: 2021_10_15_065823) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "receipt_details", "receipts"
 end
