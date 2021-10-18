@@ -1,0 +1,16 @@
+<div class="nested-fields ">
+<div class="row mb-3">
+  <div class="col">
+    <%= f.text_field :name, class: "form-control", placeholder: :name %>
+  </div>
+  <div class="col">
+    <%= f.number_field :price, class: "form-control text-end", placeholder: :price %>
+  </div>
+  <div class="col">
+    <%= f.number_field :quantity, class: "form-control text-end", placeholder: :quantity %>
+  </div>
+  <div class="col">
+    <%= link_to_remove_association '削除', f, class: 'btn btn-default' %>
+  </div>
+</div>
+</div>

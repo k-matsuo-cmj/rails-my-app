@@ -5,7 +5,7 @@ class ReceiptsController < ApplicationController
 
   def new
     @receipt = Receipt.new
-    3.times { @receipt.receipt_details.build }
+    @receipt.receipt_details.build
   end
 
   def create

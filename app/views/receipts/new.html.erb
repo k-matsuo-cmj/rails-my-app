@@ -21,19 +21,16 @@
         <%= f.number_field :total_price, class: "form-control text-end" %>
       </div>
       <%= f.label :receipt_details, class: "form-label" %>
-      <%= f.fields_for :receipt_details do |df| %>
-        <div class="row mb-3">
-          <div class="col">
-            <%= df.text_field :name, class: "form-control", placeholder: :name %>
-          </div>
-          <div class="col">
-            <%= df.number_field :price, class: "form-control text-end", placeholder: :price %>
-          </div>
-          <div class="col">
-            <%= df.number_field :quantity, class: "form-control text-end", placeholder: :quantity %>
-          </div>
-        </div>
-      <% end %>
+      <div class="mb-3" id="detail-association-insertion-point">
+        <%= f.fields_for :receipt_details do |df| %>
+          <%= render "receipt_detail_fields", f: df %>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to_add_association "追加", f, :receipt_details, class: "btn btn-sm btn-secondary",
+          data: { association_insertion_node: '#detail-association-insertion-point', association_insertion_method: 'append' } %>
+      </div>
+
       <div class="text-center">
         <%= f.submit "登録", class: "btn btn-primary" %>
       </div>
