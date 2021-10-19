@@ -7,7 +7,8 @@
       <tr>
         <th>#</th>
         <th>Date</th>
-        <th>Price</th>
+        <th>Items</th>
+        <th>Total Price</th>
       </tr>
     </thead>
     <tbody>
@@ -15,6 +16,7 @@
       <tr>
         <td><%= receipt.id %></td>
         <td><%= receipt.created_at %></td>
+        <td><%= receipt.receipt_details.count %></td>
         <td><%= receipt.total_price %></td>
       </tr>
       <% end %>

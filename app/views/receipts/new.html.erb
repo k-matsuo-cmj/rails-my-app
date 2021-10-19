@@ -16,9 +16,9 @@
   <% end %>
   <div class="form-group">
     <%= form_with(model: @receipt, local: true) do |f| %>
-      <div class="mb-3">
+      <div class="col-sm-3 mb-3">
         <%= f.label :total_price, class: "form-label" %>
-        <%= f.number_field :total_price, class: "form-control text-end" %>
+        <%= f.number_field :total_price, class: "form-control text-end", readonly: true %>
       </div>
       <%= f.label :receipt_details, class: "form-label" %>
       <div class="mb-3" id="details">
