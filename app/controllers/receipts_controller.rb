@@ -36,6 +36,12 @@ class ReceiptsController < ApplicationController
     end
   end
 
+  def destroy
+    @receipt = Receipt.find(params[:id])
+    @receipt.destroy
+    redirect_to :receipts
+  end
+
   private
     def receipt_params
       params.require(:receipt).permit(:total_price, receipt_details_attributes: [:id, :name, :price, :quantity, :_destroy])

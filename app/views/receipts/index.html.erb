@@ -16,12 +16,15 @@
       <% @receipts.each do |receipt| %>
       <tr>
         <td class="text-center"><%= receipt.id %></td>
-        <td class="text-center"><%= receipt.created_at %></td>
+        <td class="text-center"><%= receipt.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M:%S') %></td>
         <td class="text-end"><%= receipt.receipt_details.count %></td>
-        <td class="text-end"><%= receipt.total_price %></td>
+        <td class="text-end"><%= receipt.total_price.to_s(:delimited) %></td>
         <td class="text-center">
           <%= link_to edit_receipt_path(receipt.id), class:"btn btn-sm btn-warning" do %>
             <i class="bi bi-pencil-square"></i>
+          <% end %>
+          <%= link_to receipt_path(receipt.id), method: :delete, class:"btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } do %>
+            <i class="bi bi-x-square"></i>
           <% end %>
         </td>
       </tr>

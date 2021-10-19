@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   devise_for :users
   get '/lp', to: 'landing_pages#index'
   root to: 'landing_pages#index'
-  resources :receipts, only: [:index, :new, :create, :edit, :update]
+  resources :receipts, only: [:index, :new, :create, :edit, :update, :destroy]
 end
