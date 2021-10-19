@@ -4,24 +4,38 @@
 <div class="container">
   <table class="table">
     <thead>
-      <tr>
+      <tr class="text-center">
         <th>#</th>
         <th>Date</th>
         <th>Items</th>
         <th>Total Price</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <% @receipts.each do |receipt| %>
       <tr>
-        <td><%= receipt.id %></td>
-        <td><%= receipt.created_at %></td>
-        <td><%= receipt.receipt_details.count %></td>
-        <td><%= receipt.total_price %></td>
+        <td class="text-center"><%= receipt.id %></td>
+        <td class="text-center"><%= receipt.created_at %></td>
+        <td class="text-end"><%= receipt.receipt_details.count %></td>
+        <td class="text-end"><%= receipt.total_price %></td>
+        <td class="text-center">
+          <%= link_to edit_receipt_path(receipt.id), class:"btn btn-sm btn-warning" do %>
+            <i class="bi bi-pencil-square"></i>
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>
   </table>
-  <%= will_paginate @receipts, previous_label: '&lt; Prev', next_label: 'Next &gt;' %>
-  <%= link_to "add", new_receipt_path, class: "btn btn-primary" %>
+  <div class="row">
+    <div class="col">
+      <%= will_paginate @receipts, previous_label: '&lt; Prev', next_label: 'Next &gt;' %>
+    </div>
+    <div class="col-sm-2">
+      <%= link_to new_receipt_path, class: "btn btn-success" do %>
+        <i class="bi bi-receipt-cutoff"></i> add receipt
+      <% end %>
+    </div>
+  </div>
 </div>
