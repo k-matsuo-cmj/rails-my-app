@@ -1,6 +1,6 @@
 class ReceiptsController < ApplicationController
   def index
-    @receipts = Receipt.all
+    @receipts = Receipt.paginate(page: params[:page], per_page: 10)
   end
 
   def new
