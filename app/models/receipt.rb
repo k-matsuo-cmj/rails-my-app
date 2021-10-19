@@ -3,4 +3,5 @@ class Receipt < ApplicationRecord
   accepts_nested_attributes_for :receipt_details
   validates :total_price, numericality: { greater_than: 0 }
   validates :receipt_details, presence: true
+  default_scope -> { order(created_at: :desc) }
 end
