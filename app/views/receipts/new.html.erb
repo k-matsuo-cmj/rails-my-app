@@ -27,7 +27,7 @@
         <% end %>
       </div>
       <div>
-        <%= link_to_add_association "追加", f, :receipt_details, class: "btn btn-sm btn-secondary",
+        <%= link_to_add_association "<i class='bi bi-plus'></i> 追加".html_safe, f, :receipt_details, class: "btn btn-sm btn-secondary",
           data: { association_insertion_node: '#detail-association-insertion-point', association_insertion_method: 'append' } %>
       </div>
 
