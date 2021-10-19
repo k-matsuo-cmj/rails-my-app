@@ -21,14 +21,14 @@
         <%= f.number_field :total_price, class: "form-control text-end" %>
       </div>
       <%= f.label :receipt_details, class: "form-label" %>
-      <div class="mb-3" id="detail-association-insertion-point">
+      <div class="mb-3" id="details">
         <%= f.fields_for :receipt_details do |df| %>
           <%= render "receipt_detail_fields", f: df %>
         <% end %>
       </div>
       <div>
         <%= link_to_add_association "<i class='bi bi-plus'></i> 追加".html_safe, f, :receipt_details, class: "btn btn-sm btn-secondary",
-          data: { association_insertion_node: '#detail-association-insertion-point', association_insertion_method: 'append' } %>
+          data: { association_insertion_node: '#details', association_insertion_method: 'append' } %>
       </div>
 
       <div class="text-center">
@@ -37,3 +37,35 @@
     <% end %>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    sum();
+    addEvent($("#details"));
+    
+    $("#details")
+    .on("cocoon:after-insert", function(e, insertedItem) {
+      addEvent(insertedItem);
+    })
+    .on("cocoon:after-remove", function() {
+      sum();
+    });
+
+    function addEvent(obj) {
+      $(obj).find("input").change(function(){
+        sum();
+      });
+    };
+    function sum() {
+      let total = 0;
+      $("#details .row").each(function(index, row){
+        const price = $(row).find("input[id$='price']").val();
+        const quantity = $(row).find("input[id$='quantity']").val();
+        if (price && quantity) {
+          total += price * quantity;
+        }
+      });
+      $("#receipt_total_price").val(total);
+    }
+  });
+</script>
